@@ -10,7 +10,8 @@
   :components ((:module "src"
                 :components
                 ((:file "plotlib")
-		 (:file "main"))))
+		 (:file "main")
+		 (:file "html-classes"))))
   :description ""
   :in-order-to ((test-op (test-op "test-project/tests"))))
 
