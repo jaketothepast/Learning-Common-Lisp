@@ -4,6 +4,6 @@
 
 
 (defun main ()
-  (test-plotlib "file.png"))
+  (plotlib:test-plotlib "file.png"))
 
 (main)

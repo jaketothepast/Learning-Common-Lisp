@@ -9,8 +9,8 @@
 	       "vecto")
   :components ((:module "src"
                 :components
-                ((:file "main")
-		 (:file "plotlib"))))
+                ((:file "plotlib")
+		 (:file "main"))))
   :description ""
   :in-order-to ((test-op (test-op "test-project/tests"))))
 
