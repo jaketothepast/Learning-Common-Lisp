@@ -3,10 +3,11 @@
   :author ""
   :license ""
   :depends-on ("dexador"
-	       "plump"
-	       "lquery"
-	       "lparallel"
-	       "vecto")
+	           "plump"
+	           "lquery"
+	           "lparallel"
+	           "vecto"
+               "trivia" )
   :components ((:module "src"
                 :components
                 ((:file "plotlib")
