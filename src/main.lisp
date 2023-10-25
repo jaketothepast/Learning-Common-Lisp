@@ -15,6 +15,11 @@
 (defvar *doc* ($ (initialize (dex:get "https://wjhl.com"))))
 (defvar *all-children* (get-all-children *doc*))
 
+;; To hold our node plists.
+(defvar *node-tbl* (make-hash-table))
+(defun make-node-stats ()
+  (list :child-count 0))
+
 (defun walk-dom-tree (root reporter)
   "Depth-first search of the DOM, using Trivia for matching."
   (match root
@@ -26,5 +31,11 @@
      (walk-dom-tree (plump:children root) reporter))))
 
 ;; Show the dom tree walked with text nodes.
+(defun update-hash-tbl (node)
+  "Update the hash table with stats about a node."
+  (let ((stats (make-node-stats)))
+    (setf (get status :child-count) (length (plump:children node)))
+    (setf (gethash node *node-tbl*) stats)))
+
 (walk-dom-tree *all-children* (lambda (node) (princ (plump:children node))))
 (main)
