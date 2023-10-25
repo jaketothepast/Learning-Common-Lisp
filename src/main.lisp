@@ -34,8 +34,15 @@
 (defun update-hash-tbl (node)
   "Update the hash table with stats about a node."
   (let ((stats (make-node-stats)))
-    (setf (get status :child-count) (length (plump:children node)))
+    (setf (getf stats :child-count) (length (plump:children node)))
     (setf (gethash node *node-tbl*) stats)))
 
-(walk-dom-tree *all-children* (lambda (node) (princ (plump:children node))))
+(walk-dom-tree *all-children* #'update-hash-tbl)
+
+(maphash #'(lambda (key val)
+             (print (plump:get-attribute key "class"))
+             (print val))
+         *node-tbl*)
 (main)
+
+(get (make-node-stats) :child-count)
